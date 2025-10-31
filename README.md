@@ -95,8 +95,8 @@ Add light/dark mode toggle button.
 👩‍💻 Author
 Sanika Mamidwar
 🎓 BBA-CA Student | Aspiring Full Stack Developer (Python)
-💼 Built as part of a Flask Full Stack project under Flexit System training.
-🔗 LinkedIn • GitHub
+💼 Built as part of a Flask Full Stack projec
+
 
 📸 Preview
 Page	Screenshot
