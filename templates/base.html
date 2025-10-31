@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}The Python Platter{% endblock %}</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+      /* Dark Mode Toggle Button */
+      .theme-toggle {
+        background: none;
+        border: 2px solid #ffcc00;
+        color: #ffcc00;
+        border-radius: 50%;
+        padding: 8px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+      }
+
+      .theme-toggle:hover {
+        background: #ffcc00;
+        color: #000;
+        transform: rotate(20deg);
+      }
+
+      /* Light Mode Styles */
+      body.light-mode {
+        background-color: #f4f4f4;
+        color: #000;
+      }
+
+      body.light-mode .navbar {
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      body.light-mode .nav-links a {
+        color: #000;
+      }
+
+      body.light-mode .footer {
+        background: #fff;
+        color: #000;
+      }
+
+      body.light-mode .theme-toggle {
+        border-color: #000;
+        color: #000;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ===== Navigation Bar ===== -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <a href="{{ url_for('index') }}">🍴 The Python Platter</a>
+        </div>
+        <div class="nav-links">
+          <a href="{{ url_for('index') }}">🏠 Home</a>
+          <a href="{{ url_for('menu') }}">📋 Menu</a>
+          <a href="{{ url_for('specials') }}">⭐ Specials</a>
+          <a href="{{ url_for('reservations') }}">🕐 Reservations</a>
+          <a href="{{ url_for('contact') }}">📞 Contact</a>
+          <!-- Dark Mode Button -->
+          <button class="theme-toggle" id="themeToggle" title="Toggle Theme">🌙</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ===== Main Content ===== -->
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+      <p>&copy; 2025 <span>The Python Platter</span> | Crafted with 🐍 + ❤️ by Sanika Mamidwar</p>
+    </footer>
+
+    <!-- ===== Dark Mode Script ===== -->
+    <script>
+      const toggleBtn = document.getElementById("themeToggle");
+      const body = document.body;
+
+      // Load saved mode
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "light") {
+        body.classList.add("light-mode");
+        toggleBtn.textContent = "🌙";
+      }
+
+      toggleBtn.addEventListener("click", () => {
+        body.classList.toggle("light-mode");
+        const isLight = body.classList.contains("light-mode");
+        toggleBtn.textContent = isLight ? "🌙" : "☀️";
+        localStorage.setItem("theme", isLight ? "light" : "dark");
+      });
+    </script>
+  </body>
+</html>

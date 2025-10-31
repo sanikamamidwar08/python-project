@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Special Dishes | The Python Platter{% endblock %}
+
+{% block content %}
+<section class="specials-section">
+  <h1>⭐ Today’s Specials</h1>
+  <p>Handpicked dishes crafted with our chef’s creativity!</p>
+
+  <div class="menu-grid">
+    {% for item in specials %}
+    <div class="menu-card">
+      <img src="{{ url_for('static', filename='images/' + item.image) }}" alt="{{ item.name }}">
+      <div class="menu-info">
+        <h3>{{ item.name }}</h3>
+        <p class="price">₹{{ "%.2f"|format(item.price) }}</p>
+        <p class="desc">{{ item.desc }}</p>
+        <a href="{{ url_for('order') }}" class="order-btn">🛒 Order Now</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

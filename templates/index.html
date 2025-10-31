@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Home | The Python Platter{% endblock %}
+
+{% block content %}
+  <div class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>🏨 Welcome to The Hotel</h1>
+      <p class="tagline">Your favorite destination for delicious global cuisine.</p>
+      <p class="description">
+        Experience fine dining with flavors from around the world – all under one roof!
+      </p>
+      <a href="{{ url_for('menu') }}" class="button">Explore Our Menu 🍽️</a>
+    </div>
+  </div>
+{% endblock %}

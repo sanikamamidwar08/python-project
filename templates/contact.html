@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us | The Python Platter{% endblock %}
+
+{% block content %}
+<section class="contact-section">
+  <div class="contact-container">
+    <h1>📞 Get in Touch</h1>
+    <p class="contact-subtext">
+      Have a question, suggestion, or feedback? We’d love to hear from you!
+    </p>
+
+    <form method="POST" class="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message 💬</button>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <p class="flash-message">{{ messages[0] }}</p>
+      {% endif %}
+    {% endwith %}
+  </div>
+</section>
+{% endblock %}

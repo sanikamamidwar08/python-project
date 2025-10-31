@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Our Menu | The Python Platter{% endblock %}
+
+{% block content %}
+<section class="menu-section">
+  <h1 class="menu-title">📋 Our Menu</h1>
+  <p class="menu-subtitle">Delicious dishes crafted with passion and the finest ingredients</p>
+
+  <div class="menu-grid">
+    {% for item in menu_items %}
+    <div class="menu-card">
+      <img src="{{ url_for('static', filename='images/' + item.image) }}" alt="{{ item.name }}">
+      <div class="menu-info">
+        <h3>{{ item.name }}</h3>
+        <p class="price">₹{{ "%.2f"|format(item.price) }}</p>
+        <div class="tags">
+          {% if item.is_vegetarian %}
+            <span class="tag veg">🌱 Veg</span>
+          {% else %}
+            <span class="tag nonveg">🍖 Non-Veg</span>
+          {% endif %}
+          {% if item.is_special %}
+            <span class="tag special">⭐ Special</span>
+          {% endif %}
+        </div>
+        <a href="{{ url_for('order') }}" class="order-btn">Order Now 🍽️</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

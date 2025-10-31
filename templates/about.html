@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}About Us | The Python Platter{% endblock %}
+
+{% block content %}
+<section class="about-section">
+  <h1>👨‍🍳 About The Python Platter</h1>
+  <p>
+    Welcome to <strong>The Python Platter</strong> — where tradition meets innovation!  
+    Founded in 2024, we bring you a fusion of Indian, Italian, and Continental cuisines,  
+    served with a dash of creativity and love for authentic flavors.
+  </p>
+
+  <div class="about-grid">
+    <div class="about-card">
+      <img src="{{ url_for('static', filename='images/chef1.jpg') }}" alt="Chef">
+      <h3>Our Master Chef</h3>
+      <p>Chef Rahul Sharma — with 15+ years of culinary excellence — crafts every dish with precision and passion.</p>
+    </div>
+    <div class="about-card">
+      <img src="{{ url_for('static', filename='images/interior1.jpg') }}" alt="Restaurant Interior">
+      <h3>Our Ambience</h3>
+      <p>Elegant interiors, cozy lighting, and music that complements your meal. Experience dining like never before.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

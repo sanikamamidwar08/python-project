@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Reservations | The Python Platter{% endblock %}
+
+{% block content %}
+<section class="reservation-section">
+  <h1>🕐 Book a Table</h1>
+  <p>Reserve your seat and enjoy a delightful dining experience.</p>
+
+  <form method="POST" class="reservation-form">
+    <input type="text" name="name" placeholder="Your Name" required><br>
+    <input type="date" name="date" required><br>
+    <input type="time" name="time" required><br>
+    <input type="number" name="guests" placeholder="Number of Guests" min="1" required><br>
+    <button type="submit">Reserve Now</button>
+  </form>
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <p class="flash">{{ messages[0] }}</p>
+    {% endif %}
+  {% endwith %}
+</section>
+{% endblock %}

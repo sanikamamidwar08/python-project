@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Order Now | The Python Platter{% endblock %}
+
+{% block content %}
+<div class="order-section">
+  <div class="order-container">
+    <h1>🛒 Place Your Order</h1>
+    <p class="order-subtext">Fill in your details below and enjoy our delicious food at your table!</p>
+
+    <form method="POST" class="order-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="text" name="dish" placeholder="Dish Name" required>
+      <input type="number" name="quantity" placeholder="Quantity" min="1" required>
+      <button type="submit">Confirm Order</button>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <p class="flash-message">{{ messages[0] }}</p>
+      {% endif %}
+    {% endwith %}
+  </div>
+</div>
+{% endblock %}
